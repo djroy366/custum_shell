@@ -1,44 +1,39 @@
-
+#include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
 #include <string.h>
-#include "shell.h" // need to make this header file for function prototypes
+#include "main.h" // need to make this header file for function prototypes
 
+static int status=0; // Asof now , a global variable given
 
-int status; // Asof now , a global variable given
-
+void read(void)
+{
+	char buff[256];
+	fgets(buff,sizeof(buff),stdin);
+	printf(":%s\n",buff);
+}
+void do_something_bal(void) //undefined reference to `do_something_bal', So adding something
+{
+	status++;
+}
 
 void printmgs(char * input) // As of now this will print the input
 {
-	printf("%s",input);
+	printf("%s\n",input);
 }
-
-void read(void);
-
-void do_something(void);
-
-
 
 void loop(void)
 {
 	do{                //moved this from the main function
-		int i;
-		printmgs();
-		i=read();
-		do_something();
-		status=i;
-
+		printmgs("custum Shell >");
+		read();
+		do_something_bal();
+		status=1;
 	}
-
-	while(status==1)
-
+	while(status==1);
 }
-
-
 
 int main(int argc, char **argv)
 {
-
 	loop();	
-
 }

@@ -6,6 +6,7 @@
 
 static int status=0; // Asof now , a global variable given
 
+//shubham's ss
 void read(void)
 {
 	char buff[256];
